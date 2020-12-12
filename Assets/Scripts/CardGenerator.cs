@@ -74,6 +74,7 @@ public class CardGenerator : MonoBehaviour
         {
             GameObject cardButton = Instantiate(CardButtonPrefab) as GameObject;
             cardButton.transform.SetParent(Canvas.transform, false);
+            cardButton.transform.SetAsFirstSibling();
 
             Card card = CardData[i];
             cardButton.GetComponentInChildren<Text>().text = card.Slug;
@@ -89,7 +90,7 @@ public class CardGenerator : MonoBehaviour
             GameObject cardButton = CardButtons[i];
             float cardWidth = cardButton.GetComponent<RectTransform>().rect.width;
             cardButton.transform.position = 
-                new Vector3(CardX + (i - CurrentIndex) * (cardWidth + CardMargin), CardY, 1);
+                new Vector3(CardX + (i - CurrentIndex) * (cardWidth + CardMargin), CardY, 0);
         }
     }
 
