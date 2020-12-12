@@ -17,7 +17,7 @@ public class Card
     }
 }
 
-public class CardGenerator : MonoBehaviour
+public class CardController : MonoBehaviour
 {
     public GameObject CardButtonPrefab;
     public GameObject Canvas;
