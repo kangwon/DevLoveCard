@@ -3,23 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Card
-{
-    public string Type { get; set; }
-    public string Slug { get; set; }
-    public string Title { get; set; }
-
-    public Card(string type, string slug, string title)
-    {
-        this.Type = type;
-        this.Slug = slug;
-        this.Title = title;
-    }
-}
-
 public class CardController : MonoBehaviour
 {
     public GameObject CardButtonPrefab;
+    public CardDetailController DetailController;
     public GameObject Canvas;
     public int CardX = 540;
     public int CardY = 1737;
@@ -92,6 +79,7 @@ public class CardController : MonoBehaviour
             cardButton.transform.position = 
                 new Vector3(CardX + (i - CurrentIndex) * (cardWidth + CardMargin), CardY, 0);
         }
+        DetailController.CurrentCard = CardData[CurrentIndex];
     }
 
     void MoveLeft()
