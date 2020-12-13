@@ -53,11 +53,11 @@ public class CardController : MonoBehaviour
 
     void LoadWorldData()
     {
-        World world = WorldDB.GetWorld(WorldId);
+        World world = JsonDB.GetWorld(WorldId);
         Stage stage = world.stages[CurrentStage];
         foreach (string cardId in stage.cardIds)
         {
-            CardData.Add(CardDB.GetCard(cardId));
+            CardData.Add(JsonDB.GetCard(cardId));
         }
     }
 

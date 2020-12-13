@@ -4,8 +4,8 @@
         "type": "monster",
         "slug": "몹",
         "title": "슬라임",
-        "body": {
-            "hp": 10, "attack": 2, "defence": 1, "speed": 1
+        "stat": {
+            "maxHp": 10, "attack": 2, "defense": 1, "speed": 100
         }
     },
     {
@@ -13,48 +13,40 @@
         "type": "chest",
         "slug": "상자",
         "title": "상자",
-        "body": {
-            "instruction": ["heal", "player", 10] 
-        }
+        "instruction": ["heal", "player", 10] 
     },
     {
         "id": "attackBuff",
         "type": "buff",
         "slug": "버프",
         "title": "힘 버프",
-        "body": {
-            "instruction": ["buff", "player", "attack", 5]
-        }
+        "instruction": ["buff", "player", "attack", 5]
     },
     {
         "id": "damageEvent",
         "type": "buff",
         "slug": "랜덤",
         "title": "랜덤 이벤트",
-        "body": {
-            "instruction": ["damage", "player", 5]
-        }
+        "instruction": ["damage", "player", 5]
     },
     {
         "id": "savior",
         "type": "npc",
         "slug": "NPC",
         "title": "이진혁(GM)",
-        "body": {
-            "items": [
-                {
-                    "name": "힐", 
-                    "instruction": ["heal", "player", 999]
-                },
-                {
-                    "name": "힘 버프",
-                    "instruction": ["buff", "player", "attack", 99]
-                },
-                {
-                    "name": "방어 버프",
-                    "instruction": ["buff", "player", "defence", 99]
-                }
-            ]
-        }
+        "items": [
+            {
+                "name": "힐", 
+                "instruction": ["heal", "player", 999]
+            },
+            {
+                "name": "힘 버프",
+                "instruction": ["buff", "player", "attack", 99]
+            },
+            {
+                "name": "방어 버프",
+                "instruction": ["buff", "player", "defence", 99]
+            }
+        ]
     }
 ]}

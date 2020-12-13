@@ -7,6 +7,8 @@ public class CardDetailController : MonoBehaviour
 {
     public GameObject CardTitle;
 
+    public GameObject MonsterDisplay;
+
     private Card _currentCard;
     public Card CurrentCard
     { 
@@ -19,7 +21,7 @@ public class CardDetailController : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -30,5 +32,17 @@ public class CardDetailController : MonoBehaviour
     void UpdateCardDetail()
     {
         CardTitle.GetComponentInChildren<Text>().text = CurrentCard.title;
+
+        MonsterDisplay.SetActive(false);
+        
+        switch (CurrentCard.type)
+        {
+            case "monster":
+                MonsterDisplay.SetActive(true);
+                MonsterController controller = 
+                    MonsterDisplay.GetComponentInChildren<MonsterController>();
+                controller.monster = new Monster(CurrentCard.stat);
+                break;
+        }
     }
 }
