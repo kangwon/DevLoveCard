@@ -21,15 +21,10 @@ public class MonsterController : MonoBehaviour
     {
         if (!(monster is null))
         {
-            HpText.GetComponentInChildren<Text>().text = $"{monster.hp} / {monster.baseStat.maxHp}";
-            DefenseText.GetComponentInChildren<Text>().text = $"{monster.baseStat.defense}";
-            AttackText.GetComponentInChildren<Text>().text = $"{monster.baseStat.attack}";
-            SpeedText.GetComponentInChildren<Text>().text = $"{monster.baseStat.speed}";
+            HpText.GetComponentInChildren<Text>().text = $"HP: {monster.hp} / {monster.baseStat.maxHp}";
+            DefenseText.GetComponentInChildren<Text>().text = $"DEF: {monster.baseStat.defense}";
+            AttackText.GetComponentInChildren<Text>().text = $"ATK: {monster.baseStat.attack}";
+            SpeedText.GetComponentInChildren<Text>().text = $"SPD: {monster.baseStat.speed}";
         }
-    }
-
-    public void Fight()
-    {
-
     }
 }

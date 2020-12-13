@@ -5,7 +5,7 @@
         "slug": "몹",
         "title": "슬라임",
         "stat": {
-            "maxHp": 10, "attack": 2, "defense": 1, "speed": 100
+            "maxHp": 10, "attack": 3, "defense": 1, "speed": 100
         }
     },
     {
