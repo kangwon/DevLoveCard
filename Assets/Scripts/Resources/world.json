@@ -1,0 +1,10 @@
+{ "items": [
+    {
+        "id": "devWorld",
+        "stages": [
+            {
+                "cardIds": ["slime", "healChest", "attackBuff", "damageEvent", "savior"]
+            }
+        ]
+    }
+]}

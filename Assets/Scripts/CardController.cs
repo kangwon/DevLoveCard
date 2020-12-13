@@ -10,8 +10,10 @@ public class CardController : MonoBehaviour
     public GameObject Canvas;
     public int CardX = 540;
     public int CardY = 1737;
-    public int CardMargin;
+    public int CardMargin = 22;
 
+    public string WorldId = "devWorld";
+    int CurrentStage = 0;
     List<Card> CardData = new List<Card>();
     List<GameObject> CardButtons = new List<GameObject>();
     int CurrentIndex = 0;
@@ -21,7 +23,7 @@ public class CardController : MonoBehaviour
     
     void Start()
     {
-        LoadCardData();
+        LoadWorldData();
         GenerateCardButtons();
         ArrangeCards();
     }
@@ -49,13 +51,11 @@ public class CardController : MonoBehaviour
         }
     }
 
-    void LoadCardData()
+    void LoadWorldData()
     {
-        List<string> cardIds = new List<string>
-        {
-            "slime", "healChest", "attackBuff", "damageEvent", "savior"
-        };
-        foreach (string cardId in cardIds)
+        World world = WorldDB.GetWorld(WorldId);
+        Stage stage = world.stages[CurrentStage];
+        foreach (string cardId in stage.cardIds)
         {
             CardData.Add(CardDB.GetCard(cardId));
         }
