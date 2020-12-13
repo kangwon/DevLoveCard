@@ -29,6 +29,6 @@ public class CardDetailController : MonoBehaviour
 
     void UpdateCardDetail()
     {
-        CardTitle.GetComponentInChildren<Text>().text = CurrentCard.Title;
+        CardTitle.GetComponentInChildren<Text>().text = CurrentCard.title;
     }
 }

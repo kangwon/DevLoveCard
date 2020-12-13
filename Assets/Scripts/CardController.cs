@@ -12,14 +12,7 @@ public class CardController : MonoBehaviour
     public int CardY = 1737;
     public int CardMargin;
 
-    List<Card> CardData = new List<Card> 
-    {
-        new Card("monster", "몹", "슬라임"),
-        new Card("chest", "상자", "보물 상자"),
-        new Card("buff", "버프", "버프"),
-        new Card("event", "랜덤", "랜덤 이벤트"),
-        new Card("npc", "NPC", "무기 상인"),
-    };
+    List<Card> CardData = new List<Card>();
     List<GameObject> CardButtons = new List<GameObject>();
     int CurrentIndex = 0;
 
@@ -28,6 +21,7 @@ public class CardController : MonoBehaviour
     
     void Start()
     {
+        LoadCardData();
         GenerateCardButtons();
         ArrangeCards();
     }
@@ -55,6 +49,18 @@ public class CardController : MonoBehaviour
         }
     }
 
+    void LoadCardData()
+    {
+        List<string> cardIds = new List<string>
+        {
+            "slime", "healChest", "attackBuff", "damageEvent", "savior"
+        };
+        foreach (string cardId in cardIds)
+        {
+            CardData.Add(CardDB.GetCard(cardId));
+        }
+    }
+
     void GenerateCardButtons()
     {
         for (int i = 0; i < CardData.Count; i++)
@@ -64,7 +70,7 @@ public class CardController : MonoBehaviour
             cardButton.transform.SetAsFirstSibling();
 
             Card card = CardData[i];
-            cardButton.GetComponentInChildren<Text>().text = card.Slug;
+            cardButton.GetComponentInChildren<Text>().text = card.slug;
 
             CardButtons.Add(cardButton);
         }
