@@ -26,10 +26,16 @@ public class Character
 {
     public readonly Stat baseStat;
     public int hp;
+
     public Character(Stat stat)
     {
         this.baseStat = stat;
         this.hp = this.baseStat.maxHp;
+    }
+
+    public virtual Stat GetStat()
+    {
+        return baseStat;
     }
 }
 
@@ -49,7 +55,7 @@ public class Player : Character
         buffs.Add(buff);
     }
 
-    public Stat GetStat()
+    public override Stat GetStat()
     {
         return buffs.Aggregate(baseStat, (stat, buff) => stat + buff);
     }
