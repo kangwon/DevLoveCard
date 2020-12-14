@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleController : MonoBehaviour
+public class Instructor : MonoBehaviour
 {
     public PlayerController playerController;
     public MonsterController monsterController;
