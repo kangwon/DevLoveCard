@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,17 +35,37 @@ public class Instructor : MonoBehaviour
         );
     }
 
-    void Damage(Character character, int amount)
+    public void ActivateEvent()
     {
-        character.hp -= amount;
-        if (character.hp < 0)
+        Player player = playerController.player;
+        Monster monster = monsterController.monster;
+        string instruction = eventController.eventCard.instruction;
+
+        switch(instruction)
         {
-            character.hp = 0;
+            case "heal_10": Heal(player, 10); break;
+            case "heal_999": Heal(player, 999); break;
+
+            case "damage_5": Damage(player, 5); break;
+
+            case "buff_attack_5": Buff(player, new Stat(){attack = 5}); break;
+            case "buff_attack_99": Buff(player, new Stat(){attack = 99}); break;
+            case "buff_defense_99": Buff(player, new Stat(){defense = 99}); break;
         }
     }
 
-    public void ActivateEvent()
+    void Damage(Character character, int amount)
     {
+        character.hp = Math.Max(character.hp - amount, 0);
+    }
 
+    void Heal(Character character, int amount)
+    {
+        character.hp = Math.Min(character.hp + amount, character.GetStat().maxHp);
+    }
+
+    void Buff(Player character, Stat buff)
+    {
+        character.AddBuff(buff);
     }
 }

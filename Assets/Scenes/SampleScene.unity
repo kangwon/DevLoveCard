@@ -671,6 +671,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardTitle: {fileID: 1181391739}
   MonsterDisplay: {fileID: 863284601}
+  EventDisplay: {fileID: 1711795737}
 --- !u!1 &843978569
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,7 +792,7 @@ GameObject:
   - component: {fileID: 978220768}
   - component: {fileID: 978220767}
   m_Layer: 5
-  m_Name: BattleButton
+  m_Name: ActivateButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1121,6 +1122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 187209276}
   monsterController: {fileID: 863284602}
+  eventController: {fileID: 1711795739}
 --- !u!4 &1252065387
 Transform:
   m_ObjectHideFlags: 0
@@ -1418,13 +1420,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1711795737}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f56290ac2be5426489e93a2b4532408, type: 3}
+  m_Script: {fileID: 11500000, guid: 2eb795e086c2245d59bec491e856a3a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HpText: {fileID: 0}
-  DefenseText: {fileID: 0}
-  AttackText: {fileID: 0}
-  SpeedText: {fileID: 0}
+  eventCard:
+    id: 
+    type: 
+    slug: 
+    title: 
+    instruction: 
+    stat:
+      maxHp: 0
+      attack: 0
+      defense: 0
+      speed: 0
 --- !u!1 &1802679510
 GameObject:
   m_ObjectHideFlags: 0

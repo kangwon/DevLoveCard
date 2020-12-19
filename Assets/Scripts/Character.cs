@@ -15,10 +15,15 @@ public class Stat
         return new Stat
         {
             maxHp = a.maxHp + b.maxHp,
-            attack = a.attack + b.maxHp,
+            attack = a.attack + b.attack,
             defense = a.defense + b.defense,
             speed = a.speed + b.speed
         };
+    }
+
+    public override string ToString()
+    {
+        return $"Stat(hp:{maxHp}, atk:{attack}, def:{defense}, spd:{speed})";
     }
 }
 
