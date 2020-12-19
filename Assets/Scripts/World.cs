@@ -8,6 +8,7 @@ public class Card : JsonItem
     public string type;
     public string slug;
     public string title;
+    public string instruction;
     public Stat stat;
 }
 

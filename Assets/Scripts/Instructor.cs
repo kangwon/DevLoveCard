@@ -6,6 +6,7 @@ public class Instructor : MonoBehaviour
 {
     public PlayerController playerController;
     public MonsterController monsterController;
+    public EventController eventController;
 
     void Start()
     {
@@ -40,5 +41,10 @@ public class Instructor : MonoBehaviour
         {
             character.hp = 0;
         }
+    }
+
+    public void ActivateEvent()
+    {
+
     }
 }

@@ -13,21 +13,21 @@
         "type": "chest",
         "slug": "상자",
         "title": "상자",
-        "instruction": ["heal", "player", 10] 
+        "instruction": "heal_10"
     },
     {
         "id": "attackBuff",
         "type": "buff",
         "slug": "버프",
         "title": "힘 버프",
-        "instruction": ["buff", "player", "attack", 5]
+        "instruction": "buff_attack_5"
     },
     {
         "id": "damageEvent",
-        "type": "buff",
+        "type": "random",
         "slug": "랜덤",
         "title": "랜덤 이벤트",
-        "instruction": ["damage", "player", 5]
+        "instruction": "damage_5"
     },
     {
         "id": "savior",
@@ -37,15 +37,15 @@
         "items": [
             {
                 "name": "힐", 
-                "instruction": ["heal", "player", 999]
+                "instruction": "heal_999"
             },
             {
                 "name": "힘 버프",
-                "instruction": ["buff", "player", "attack", 99]
+                "instruction": "buff_attack_99"
             },
             {
                 "name": "방어 버프",
-                "instruction": ["buff", "player", "defence", 99]
+                "instruction": "buff_defense_99"
             }
         ]
     }

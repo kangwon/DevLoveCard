@@ -8,6 +8,7 @@ public class CardDetailController : MonoBehaviour
     public GameObject CardTitle;
 
     public GameObject MonsterDisplay;
+    public GameObject EventDisplay;
 
     private Card _currentCard;
     public Card CurrentCard
@@ -34,14 +35,23 @@ public class CardDetailController : MonoBehaviour
         CardTitle.GetComponentInChildren<Text>().text = CurrentCard.title;
 
         MonsterDisplay.SetActive(false);
+        EventDisplay.SetActive(false);
         
         switch (CurrentCard.type)
         {
             case "monster":
                 MonsterDisplay.SetActive(true);
-                MonsterController controller = 
+                MonsterController monsterController = 
                     MonsterDisplay.GetComponentInChildren<MonsterController>();
-                controller.monster = new Monster(CurrentCard.stat);
+                monsterController.monster = new Monster(CurrentCard.stat);
+                break;
+            case "chest":
+            case "buff":
+            case "random":
+                EventDisplay.SetActive(true);
+                EventController evnetController = 
+                    EventDisplay.GetComponentInChildren<EventController>();
+                evnetController.eventCard = CurrentCard;
                 break;
         }
     }
