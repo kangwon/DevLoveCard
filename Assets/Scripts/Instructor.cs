@@ -8,6 +8,7 @@ public class Instructor : MonoBehaviour
     public PlayerController playerController;
     public MonsterController monsterController;
     public EventController eventController;
+    public NpcConstroller npcController;
 
     void Start()
     {
@@ -25,21 +26,37 @@ public class Instructor : MonoBehaviour
         Monster monster = monsterController.monster;
         Damage(
             monster, 
-            player.GetStat().attack * player.GetStat().speed / 100
-            - monster.GetStat().defense
+            Math.Max(
+                player.GetStat().attack * player.GetStat().speed / 100
+                - monster.GetStat().defense,
+                1
+            )
         );
         Damage(
             player, 
-            monster.GetStat().attack * monster.GetStat().speed / 100
-            - player.GetStat().defense
+            Math.Max(
+                monster.GetStat().attack * monster.GetStat().speed / 100
+                - player.GetStat().defense,
+                1
+            )
         );
     }
 
     public void ActivateEvent()
     {
+        ExecuteInstruction(eventController.eventCard.instruction);
+    }
+
+    public void BuyItem(int itemIndex)
+    {
+        NpcItem item = npcController.npcCard.items[itemIndex];
+        ExecuteInstruction(item.instruction);
+    }
+
+    void ExecuteInstruction(string instruction)
+    {
         Player player = playerController.player;
         Monster monster = monsterController.monster;
-        string instruction = eventController.eventCard.instruction;
 
         switch(instruction)
         {

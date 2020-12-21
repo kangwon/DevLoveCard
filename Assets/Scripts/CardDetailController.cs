@@ -9,6 +9,7 @@ public class CardDetailController : MonoBehaviour
 
     public GameObject MonsterDisplay;
     public GameObject EventDisplay;
+    public GameObject NpcDisplay;
 
     private Card _currentCard;
     public Card CurrentCard
@@ -36,6 +37,7 @@ public class CardDetailController : MonoBehaviour
 
         MonsterDisplay.SetActive(false);
         EventDisplay.SetActive(false);
+        NpcDisplay.SetActive(false);
         
         switch (CurrentCard.type)
         {
@@ -52,6 +54,12 @@ public class CardDetailController : MonoBehaviour
                 EventController evnetController = 
                     EventDisplay.GetComponentInChildren<EventController>();
                 evnetController.eventCard = CurrentCard;
+                break;
+            case "npc":
+                NpcDisplay.SetActive(true);
+                NpcConstroller npcConstroller =
+                    NpcDisplay.GetComponentInChildren<NpcConstroller>();
+                npcConstroller.npcCard = CurrentCard;
                 break;
         }
     }

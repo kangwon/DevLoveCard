@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 
 [System.Serializable]
+public class NpcItem
+{
+    public string name;
+    public string instruction;
+}
+
+[System.Serializable]
 public class Card : JsonItem
 {
     public string type;
@@ -10,6 +17,7 @@ public class Card : JsonItem
     public string title;
     public string instruction;
     public Stat stat;
+    public List<NpcItem> items;
 }
 
 [System.Serializable]
