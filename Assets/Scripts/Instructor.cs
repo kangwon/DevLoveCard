@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Instructor : MonoBehaviour
 {
@@ -20,26 +21,9 @@ public class Instructor : MonoBehaviour
         
     }
 
-    public void Battle()
+    public void DoBattle()
     {
-        Player player = playerController.player;
-        Monster monster = monsterController.monster;
-        Damage(
-            monster, 
-            Math.Max(
-                player.GetStat().attack * player.GetStat().speed / 100
-                - monster.GetStat().defense,
-                1
-            )
-        );
-        Damage(
-            player, 
-            Math.Max(
-                monster.GetStat().attack * monster.GetStat().speed / 100
-                - player.GetStat().defense,
-                1
-            )
-        );
+        ExecuteInstruction("battle");
     }
 
     public void ActivateEvent()
@@ -60,6 +44,8 @@ public class Instructor : MonoBehaviour
 
         switch(instruction)
         {
+            case "battle": Battle(player, monster); break;
+
             case "heal_10": Heal(player, 10); break;
             case "heal_999": Heal(player, 999); break;
 
@@ -68,6 +54,15 @@ public class Instructor : MonoBehaviour
             case "buff_attack_5": Buff(player, new Stat(){attack = 5}); break;
             case "buff_attack_99": Buff(player, new Stat(){attack = 99}); break;
             case "buff_defense_99": Buff(player, new Stat(){defense = 99}); break;
+        }
+
+        if(monster.isDead)
+        {
+            SceneManager.LoadScene("GameClearScene");
+        }
+        else if(player.isDead)
+        {
+            SceneManager.LoadScene("GameOverScene");
         }
     }
 
@@ -84,5 +79,25 @@ public class Instructor : MonoBehaviour
     void Buff(Player character, Stat buff)
     {
         character.AddBuff(buff);
+    }
+
+    void Battle(Character player, Character monster)
+    {
+        Damage(
+            monster, 
+            Math.Max(
+                player.GetStat().attack * player.GetStat().speed / 100
+                - monster.GetStat().defense,
+                1
+            )
+        );
+        Damage(
+            player, 
+            Math.Max(
+                monster.GetStat().attack * monster.GetStat().speed / 100
+                - player.GetStat().defense,
+                1
+            )
+        );
     }
 }

@@ -2161,7 +2161,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1252065386}
         m_TargetAssemblyTypeName: Instructor, Assembly-CSharp
-        m_MethodName: Battle
+        m_MethodName: DoBattle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

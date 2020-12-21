@@ -31,6 +31,10 @@ public class Character
 {
     public readonly Stat baseStat;
     public int hp;
+    public bool isDead
+    {
+        get => hp <= 0;
+    }
 
     public Character(Stat stat)
     {
